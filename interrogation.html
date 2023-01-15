@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delhi Police </title>
+    <link rel="icon" href="/favicon.ico">
+
+    <!----======== CSS ======== -->
+    <link rel="stylesheet" href="/style2.css">
+     
+    <!----===== Iconscout CSS ===== -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+    
+    <style>
+        ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+        
+        }
+        
+        li {
+          float: left;
+          padding-left: 30px;
+        }
+        
+        li a {
+          display: block;
+          color: white;
+          text-align: center;
+          padding: 20px;
+          text-decoration: none;
+        }
+        .add{
+            height: 40px;
+            width: 49px;
+            color: black;
+        }
+        .upload{
+            
+           height: 40%;
+           width: 20%;
+           border-radius: 4px;
+           background-color: #052680;
+           text-align: center;
+           
+       }
+       .upload a{
+        text-decoration: none;
+       color: white;
+       margin-left: 21%;
+       margin-top: 0%;
+       padding-bottom: 2%
+       }
+        
+        
+        </style>
+</head>
+<body>
+    <div class="container">
+        <header>Interrogation Report</header>
+
+        <form action="/interrogation" method="post" enctype="multipart/form-data" >
+            <div id="form first">
+                <div class="details personal">
+                    <span class="title">Category</span>
+                    <ul class="category"> <li><input type="checkbox" name="category" id="" value="jail/bail"> Jail/Bail</li>
+                        
+                        <li><input type="checkbox" name="category" id="" value="Criminal Activity"> Criminal Activity</li>
+                        <li><input type="checkbox" name="category" id="" value="Bad Character"> Bad Character</li>
+                        <li><input type="checkbox" name="category" id="" value="Bound Down 107"> Bound Down 107</li>
+                        
+                    </ul>
+                    <label>other category</label>
+                        <input type="text" id="inner" name="more">
+                    <span class="title">Details</span>
+
+                    <div class="fields">
+                        <!-- Police_Station -->
+                        <div class="input-field">
+                            <label>Police Station</label>
+                            <select name="Police_Station" required>
+                                <option></option>
+                                <option>Bawana</option>
+                                <option>SB Dairy</option>
+                                <option>Narela</option>
+                                <option>NIA</option>
+                                <option>Alipur</option>   
+                                <option>SP Badli</option>
+                                <option>BH Dairy</option>
+                                <option>Swaroop Nagar</option>
+                                </select>
+                        </div>
+                        <div class="input-field">
+                            <label>Region no</label>
+                            <input type="number" name="Region_No" placeholder="Enter Region Number" required>
+                        </div>
+                        <div class="input-field">
+                            <label>Unique id</label>
+                            <input type="text" name="fir_no" placeholder="Unique id" required>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Name</label>
+                            <input type="text" name="Name" placeholder="Enter your name" required >
+                        </div>
+
+                        <div class="input-field">
+                            <label>Email</label>
+                            <input type="text" name="Email" placeholder="Enter your email" >
+                        </div>
+
+                        <div class="input-field">
+                            <label>Mobile Number</label>
+                            <input type="number" name="Mobile" placeholder="Enter mobile number" required>
+                        </div>
+                        <div class="input-field">
+                            <label>Alternative Mobile Number</label>
+                            <input type="number" name="Mobile" placeholder="Enter mobile number" >
+                        </div>
+
+                        <div class="input-field">
+                            <label>Gender</label>
+                            <select name="gender"  required>
+                                <option></option>
+                                <option value="Male" >Male</option>
+                                <option value="Female" >Female</option>
+                                <option  value="Others" >Others</option>
+                            </select>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Occupation</label>
+                            <input type="text" name="Occupation" placeholder="Enter your ccupation" >
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <div class="details ID">
+                    <span class="title">Physical Features</span>
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>Age</label>
+                            <input type="number" name="age"  placeholder="Enter Age" >
+                        </div>
+
+                        <div class="input-field">
+                            <label>Height</label>
+                            <input type="number" name="height"  placeholder="Enter height" >
+                        </div>
+
+                        <div class="input-field">
+                            <label>Weight</label>
+                            <input type="number" name="weight" placeholder="Enter weight" >
+                        </div>
+
+                        <div class="input-field">
+                            <label>Health</label>
+                            <input type="text" name="health" placeholder="Enter health condition" >
+                        </div>
+                    
+
+                    </div>
+                    <div class="details address">
+                        <span class="title">Details of Address</span>
+    
+                        <div class="fields">
+                            <div class="input-field">
+                                <label>Present Address</label>
+                                <input type="text" name="present_address" placeholder="Enter present address" >
+                            </div>
+    
+                            <div class="input-field">
+                                <label>Permanent Address</label>
+                                <input type="text" name="permanent_Address" placeholder="Enter premanent address" >
+                            </div>
+                            <div class="input-field">
+                                <label></label>
+                            </div>
+    
+                        </div>
+                    </div>
+                    <div class="details livelihood">
+                        <span class="title">Source of Livelihood</span>
+    
+                        <div class="fields">
+                            <div class="input-field">
+                                <label>Version of suspect</label>
+                                <input type="text" name="version" placeholder="Enter suspect" >
+                            </div>
+    
+                            <div class="input-field">
+                                <label>Report of the beat staff/crack team</label>
+                                <input type="text" name="report" placeholder="Enter details" >
+                            </div>
+                            <div class="input-field">
+                                <label></label>
+                            </div>
+    
+                        </div>
+                    </div>
+                    <div class="details contacts">
+                        <span class="title">Contact Numbers</span>
+    
+                        <div class="fields">
+                            <div class="input-field">
+                                <label>contact number</label>
+                                <input type="number" name="contact_number" placeholder="Enter contact number" >
+                            </div>
+    
+                            <div class="input-field">
+                                <label>Alternate number</label>
+                                <input type="number" name="alternate_number" placeholder="enter alternate number" >
+                            </div>
+                            <div class="input-field">
+                                <label></label>
+                            </div>
+    
+                        </div>
+                    </div>
+                    <div class="details family">
+                        <span class="title">Details of Family</span>
+    
+                        <div class="fields">
+                            <div class="input-field">
+                                <label>Name</label>
+                                <input type="text" name="name1" placeholder="Enter your name" >
+                            </div>
+    
+                            <div class="input-field">
+                                <label>Address</label>
+                                <input type="text" name="address" placeholder="Enter your address" >
+                            </div>
+    
+                            <div class="input-field">
+                                <label>Mobile Number</label>
+                                <input type="number" name="mobile_Number1" placeholder="Enter your number" >
+                            </div>
+    
+                            <div class="input-field">
+                                <label>Relation</label>
+                                <input type="text" name="relation" placeholder="Enter your relation" >
+                            </div>
+    
+                            <div class="input-field">
+                                <label>Occupation</label>
+                                <input type="text" name="Occupation1" placeholder="Enter your occupation" >
+                            </div>
+                            <div class="input-field">
+                                <label></label>
+                            </div>
+                        </div>
+                    </div>
+                    
+    
+                    <div class="details family">
+                        <span class="title">Details of Associates</span>
+    
+                        <div class="fields">
+                            <div class="input-field">
+                                <label>Name</label>
+                                <input type="text" name="name2" placeholder="Enter name" >
+                            </div>
+    
+                            <div class="input-field">
+                                <label>Address</label>
+                                <input type="text" name="address2" placeholder="Enter permanent Address" >
+                            </div>
+    
+                            <div class="input-field">
+                                <label>Mobile Number</label>
+                                <input type="number" name="Mobile_Number3" placeholder="Enter your number" >
+                            </div>
+    
+                            <div class="input-field">
+                                <label>Involvement</label>
+                                <input type="text" name="involvement" placeholder="involvement" >
+                            </div>
+    
+                            <div class="input-field">
+                                <label>Occupation</label>
+                                <input type="text" name="Occupation2"  placeholder="enter your occupation" >
+                            </div>
+                            <div class="input-field">
+                                <label></label>
+                            </div>
+                            
+                        </div>
+                        <div class="more details">
+                            <span class="title">Further Details</span>
+        
+                            <div class="fields">
+                                <div class="input-field">
+                                    <label>Area of Activity</label>
+                                    <input type="text" name="area" placeholder="Enter area of activity" >
+                                </div>
+        
+                                <div class="input-field">
+                                    <label>To whom he supplies/sells stolen property</label>
+                                    <input type="text" name="supplies" placeholder="Enter details" >
+                                </div>
+        
+                                <div class="input-field">
+                                    <label>Vehicles possessed/used</label>
+                                    <input type="text" name="Vehicles" placeholder="Enter details" >
+                                </div>
+        
+                                
+        
+                                <div class="input-field">
+                                    <label>Occupation</label>
+                                    <input type="text" name="Occupation3" placeholder="Enter your occupation" >
+                                </div>
+                                
+                            </div>
+                        </div>
+        
+                        <div class="details family">
+                            <span class="title">House search conducted</span>
+        
+                            <div class="fields">
+                                <div class="input-field">
+                                    <label>Date</label>
+                                    <input type="date" name="Date1" placeholder="Enter date" >
+                                </div>
+        
+                                <div class="input-field">
+                                    <label>Outcome</label>
+                                    <input type="text" name="Outcome" placeholder="outcome" >
+                                </div>
+                                
+                                <div class="input-field">
+                                    <label>Google ID</label>
+                                    <input type="text" name="Google_ID" placeholder="Enter your ID" >
+                                </div>
+                                <div class="input-field">
+                                    <label>Other relevant details</label>
+                                    <input type="text" name="Other"placeholder="Enter more details" >
+                                </div>
+                                
+                                <div class="input-field ">
+                                    <div class="image_folder">
+                                        <label>Upload Images</label>
+                                        <input name="foo" type="file" accept="image/*" required>
+                                        <a href="#" class="add">Add More</button>
+                                            <!-- <input name="foo" type="file" /> -->
+                                           
+                                    </div>
+                                    
+                                    
+                                </div>
+                                
+                                
+                            </div>
+                            <div class="upload"> 
+                                
+                            </div>
+                            
+                            <div class="buttons">
+                                <button type="submit"  class="sumbit">
+                                    <span class="btnText">Submit</span>
+                                    <i class="uil uil-navigator"></i>
+                                </button>
+        
+                            </div>
+                        </div> 
+                        
+                        
+                    </div> 
+
+                    
+                </div> 
+            </div>  
+        </form>
+    </div>
+
+    <script src="/script.js"></script>
+</body>
+</html>

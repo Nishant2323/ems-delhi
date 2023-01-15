@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delhi Police</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+<style>
+  .image{
+    height: 50px;
+    width: 50px;
+  }
+  .image2{
+    height: 90px;
+    width: 90px;
+  }
+  .logo{
+    margin-bottom: -7%;
+    margin-left: 46%;
+  }
+  h2{
+    margin-left: 41%;
+    margin-top: 10%;
+    margin-bottom: -7%;
+    font-size: 314%;
+}
+  .table-responsive{
+    padding: 8%;
+    padding: 8%;
+    border: solid black;
+    margin-left: 12%;
+    margin-right: 12%;
+    background-color: white;
+  }
+  .navbar{
+    display: flex;
+    justify-content: center;
+    position: sticky;
+    top : 0;
+    z-index: 100;
+    background-color:#00008b;
+    
+  }
+  .button{
+    display: block;
+    width: 50px;
+    height: 43px;
+    background-color:#a93636;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    font-weight: bold;
+    line-height: 25px;
+    text-decoration: none ;
+    color: white;
+    border-radius: 100%;
+  
+    
+  } 
+.fa-solid{
+  size: 20%;
+}
+.nav-link{
+  display: flex;
+  flex-direction: column;
+  color: white;
+  
+ 
+}
+body{
+  background-image: url("/dp-1107258-1651920528.jpeg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+}
+span{
+  color: white;
+}
+.er{
+  margin-bottom: -4%;
+
+}
+.button1{
+  color: white;
+  display: block;
+    width: 40px;
+    height: 40px;
+    background-color:#a93636;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    font-weight: bold;
+    line-height: 25px;
+    text-decoration: none ;
+   
+    border-radius: 100%;
+}
+@media only screen and (max-width: 600px) {
+ h2 {
+    margin-left: 42%;
+    margin-top: 5%;
+    margin-bottom: 1%;
+    font-size: 128%;
+}
+}
+</style>
+</head>
+<body>
+  
+  <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"><img class="image2" src="\logo.png" alt=""></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/bail/Verified/d">Verified</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./detail">Search</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav> -->
+  <img class ="logo" src="/DP_small.png" alt="">
+    
+    <h2>Criminal List</h2>
+    <div class="table-responsive">
+      <table id="example" class="table table-striped" style="width:100%">
+        <thead>
+          
+          <tr>
+            <th scope="col">S.No</th>
+            <th scope="col">Accused Name</th>
+            <th scope="col"> Data of Release </th>
+            <th scope="col">Mobile Number</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Age</th>
+            <th scope="col">Police Station</th>
+            <th>more details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for(var i=0;i<newitem.length;i++){ %>
+          <tr>
+            <td><%= newitem[i].sno %></td>
+            <td><%= newitem[i].accused_name%></td>
+            <td><%= newitem[i].date %></td>
+            <td><%= newitem[i].mobile_number %></td>
+            <td><%= newitem[i].gender %></td>
+            <td><%= newitem[i].age %></td>
+            <td> <%= newitem[i].police_station %>  </td>
+            <td><a href="/sho/bail/Dash/name/<%=newitem[i].sno %>/<%=newitem[i].verification%>">view more</a></td>
+          </tr>
+       <% } %>
+        </tbody>
+      </table>
+    </div>
+
+    <<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>  
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://kit.fontawesome.com/1897059157.js" crossorigin="anonymous"></script>
+    <script>
+      $(document).ready(function () {
+    $('#example').DataTable();
+    });
+    </script>
+</body>
+</html>

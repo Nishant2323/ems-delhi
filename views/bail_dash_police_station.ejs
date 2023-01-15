@@ -1,0 +1,38 @@
+<%- include('partials/header') %>
+
+<div class="container mt-5">
+  <img src="/DP_small.png" alt="">
+  <h1>Login</h1>
+
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="card">
+        <div class="card-body">
+
+          <!-- Makes POST request to /login route -->
+          <form action="/bail/dash/police_station" method="POST">
+            
+            <div class="form-group">
+              <label for="">police station Name</label>
+              <input type="text" placeholder="enter police station name starting with capital letter" class="form-control" name="police" required>
+            </div>
+            <select name="verification" required>
+                <option disabled selected>your answer</option>
+                <option>Verified</option>
+                <option>Unverified</option>
+            </select>
+            <button type="submit" class="btn btn-dark">Login</button>
+          </form>
+          
+        </div>
+      </div>
+    </div>
+
+     <div class="col-sm-4">
+
+    </div> 
+
+  </div>
+</div>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/favicon.ico">
+
+    <title>Delhi Police</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<style>
+  .image1{
+   
+   width: 28%;
+    height: 28%;
+  }
+  .table-responsive{
+    margin: 12%;
+    
+  }
+  .image{
+    margin-left: 42%;
+    
+  }
+  table{
+    border: solid;
+  }
+</style>
+</head>
+<body>
+  
+  
+    <div class="table-responsive">
+      <img class=" image" src="/DP_small.png" alt="">
+      <h1>Image</h1>
+     <img class="image1" src="/uploads/<%=newitem1.image%>" alt="image">
+       <br>
+      <table class="table table-striped table-sm">
+        <tbody>
+          <tr>
+            <td scope="col">Name</td>
+            <td><%= newitem1.name %></td>
+          </tr>
+          <tr>
+            <td scope="col">Email</td>
+            <td><%= newitem1.email %></td>
+          </tr>
+          <tr>
+            <td scope="col">Mobile Number</td>
+            <td><%= newitem1.mobile_number %></td>
+          </tr>
+          <tr>
+            <td scope="col">Gender</td>
+            <td><%= newitem1.gender%></td>
+          </tr>
+          <tr>
+            <td scope="col">Present Occupation</td>
+            <td><%= newitem1.present_occupation %></td>
+          </tr>
+          <tr>
+            <td scope="col">Education Qualification</td>
+            <td><%= newitem1.education_qualification %></td>
+          </tr>
+          <tr>
+            <td scope="col">Age</td>
+            <td><%= newitem1.age%></td>
+          </tr>
+          <tr>
+            <td scope="col">Health</td>
+            <td><%= newitem1.health %></td>
+          </tr>
+          <tr>
+            <td scope="col">Addiction</td>
+            <td><%= newitem1.addiction%></td>
+          </tr>
+          <tr>
+            <td scope="col">Name of Provider</td>
+            <td><%= newitem1.name_of_provider%></td>
+          </tr>
+          <tr>
+            <td scope="col">Provider Address</td>
+            <td><%= newitem1.provider_address%></td>
+          </tr>
+          <tr>
+            <td scope="col">Provider Contact Details</td>
+            <td><%= newitem1.provider_contact%></td>
+          </tr>
+          <tr>
+            <td scope="col">Present Address</td>
+            <td><%= newitem1.present_address%></td>
+          </tr>
+          <tr>
+            <td scope="col">Permanent Address</td>
+            <td><%= newitem1.permanent_address%></td>
+          </tr>
+          <tr>
+            <td scope="col">Permanent Address</td>
+            <td><%= newitem1.permanent_address%></td>
+          </tr>
+          <tr>
+            <td scope="col">Any Criminal Case</td>
+            <td><%= newitem1.criminal_case%></td>
+          </tr>
+          <tr>
+            <td scope="col">Vehicle Details</td>
+            <td><%= newitem1.vehicle_details%></td>
+          </tr>
+          <tr>
+            <td scope="col">Interested in Occupation</td>
+            <td><%= newitem1.interested_occupation%></td>
+          </tr>
+          <tr>
+            <td scope="col">Other Relevant Details</td>
+            <td><%= newitem1.other_details%></td>
+          </tr>
+          <tr>
+            <td scope="col">Employer name</td>
+            <td><%= newitem1.employer_name%></td>
+          </tr>
+          <tr>
+            <td scope="col">Employer Phone Number</td>
+            <td><%= newitem1.employer_no%></td>
+          </tr>
+          <tr>
+            <td scope="col">Employer Address</td>
+            <td><%= newitem1.employer_address%></td>
+          </tr>
+         
+        </tbody>
+      </table>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>  
+</body>
+</html>

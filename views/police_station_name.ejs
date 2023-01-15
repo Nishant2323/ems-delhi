@@ -1,0 +1,40 @@
+<%- include('partials/header') %>
+
+<div class="container mt-5">
+  <h1>Login</h1>
+
+  <div class="row">
+    <div class="col-sm-8">
+      <div class="card">
+        <div class="card-body">
+
+          <!-- Makes POST request to /login route -->
+          <form action="/bail/dash/sho" method="POST">
+            
+            <div class="form-group">
+              <label for="">police_station</label>
+              <input type="text" class="form-control" name="No">
+            </div>
+            <div class="input-field">
+                <label>Verified/Unverified</label>
+                <select name="verification" required>
+                    <option disabled selected>your answer</option>
+                    <option>Verified</option>
+                    <option>Unverified</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-dark">Login</button>
+          </form>
+          
+        </div>
+      </div>
+    </div>
+
+     <div class="col-sm-4">
+      
+    </div> 
+
+  </div>
+</div>
+
+<%- include('partials/footer') %>

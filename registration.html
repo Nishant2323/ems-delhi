@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!----======== CSS ======== -->
+    <link rel="stylesheet" href="style2.css">
+     
+    <!----===== Iconscout CSS ===== -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+
+    
+    <style>
+        ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+        
+        }
+        
+        li {
+          float: left;
+          padding-left: 30px;
+        }
+        
+        li a {
+          display: block;
+          color: white;
+          text-align: center;
+          padding: 20px;
+          text-decoration: none;
+        }
+        
+        
+        </style>
+</head>
+<body>
+    <div class="container">
+        <header>Registration Form</header>
+
+        <form action="/Registration" method="post"  enctype="multipart/form-data">
+            <div id="form first">
+                <div class="details personal">
+                    
+                    
+                    <span class="title">Details</span>
+
+                    <div class="fields">
+                        
+                        <div class="input-field">
+                            <label>Name</label>
+                            <input type="text" name="name" placeholder="Enter your name">
+                        </div>
+
+                        <div class="input-field">
+                            <label>Email</label>
+                            <input type="text" name="email" placeholder="Enter your email">
+                        </div>
+
+                        <div class="input-field moblie_nu">
+                            <label>Mobile Number</label>
+                            <input type="number" name="mobile_number" placeholder="Enter mobile number">
+                            <a href="#" class="add">Add more</a>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Gender</label>
+                            <select name="gender" required>
+                                <option disabled selected>Select gender</option>
+                                <option>Male</option>
+                                <option>Female</option>
+                                <option>Others</option>
+                            </select>
+                        </div>
+
+                        <div class="input-field">
+                            <label>Present Occupation</label>
+                            <input type="text" name="present_occupation" placeholder="Enter your ccupation">
+                        </div>
+                        <div class="input-field">
+                            <label>Education Qualification</label>
+                            <input type="text" name="education_qualification" placeholder="Enter your qualification">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="details ID">
+                    <span class="title">Physical Features</span>
+
+                    <div class="fields">
+                        <div class="input-field">
+                            <label>Age</label>
+                            <input type="number"name="age" placeholder="Enter Age">
+                        </div>
+                        <div class="input-field">
+                            <label>Health</label>
+                            <input type="text" name="health" placeholder="Enter health condition">
+                        </div>
+                        
+                        <div class="input-field">
+                            <label>Addiction </label>
+                            <input type="text" name="addiction" placeholder="Smoking,drinks etc " required>
+                        </div>
+
+                    </div>
+                    <span class="title">Addiction Details</span>
+
+                    <div class="fields">
+                        <div class="input-field">
+                        <label>Name of Provider </label>
+                        <input type="text" name="name_of_provider" placeholder="Name of Provider" required>
+                        </div>
+                    
+                     
+                    <div class="input-field">
+                        <label>Address of Provider</label>
+                        <input type="text" name="provider_address"placeholder="Address of Provider" required>
+                    </div>
+
+                    <div class="input-field">
+                        <label>Provider Contact Details </label>
+                        <input type="text" name="provider_contact" placeholder=" Enter Phone Number " required>
+                    </div>
+                    </div>
+                    <div class="details address">
+                        <span class="title">Details of Address</span>
+    
+                        <div class="fields">
+                            <div class="input-field">
+                                <label>Present Address</label>
+                                <input type="text" name="present_address"placeholder="Enter present address">
+                            </div>
+    
+                            <div class="input-field">
+                                <label>Permanent Address</label>
+                                <input type="text" name="permanent_address" placeholder="Enter premanent address">
+                            </div>
+                            <div class="input-field">
+                                <label></label>
+                            </div>
+    
+                        </div>
+                    </div>
+                    <div class="details livelihood">
+                        <span class="title">Further Details</span>
+    
+                        <div class="fields">
+                            <div class="input-field">
+                                <label>Any criminal Case</label>
+                                <input type="text" name="criminal_case" placeholder="Enter details">
+                            </div>
+    
+                            <div class="input-field">
+                                <label>Vehicle Details</label>
+                                <input type="text" name="vehicle_details" placeholder="Enter details">
+                            </div>
+                            <div class="input-field">
+                                <label>Interseted in Occupation</label>
+                                <select name="interested_occupation" required>
+                                    <option disabled selected>Select choice</option>
+                                    <option>Mobile Repair</option>
+                                    <option>Electrician</option>
+                                    <option>Motor Vehicle repair</option>
+                                    <option>Pizza Hut worker</option>
+                                    <option>Medical Assistant</option>
+                                    <option>Data Operator</option>
+                                    <option>Others</option>
+                                </select>
+                            </div>
+                            <div class="input-field">
+                                <label>Other relevant Detail</label>
+                                <input type="text" name="other_details" placeholder="Enter more details" required>
+                            </div>
+                    
+                    <div class="input-field">
+                        <label>Employer Name </label>
+                        <input type="text" name="employer_name" placeholder="Enter Employer Name" required>
+                    </div>
+
+                    <div class="input-field">
+                        <label>Employer Phone Number </label>
+                        <input type="number" name="employer_no"placeholder="Enter Employer Phone Number" required>
+                    </div>
+
+                    <div class="input-field">
+                        <label>Employer Address </Address> <Address></Address> </label>
+                        <input type="text" name="employer_address" placeholder="Enter Employer Address" required>
+                    </div>
+                    
+                    <div class="input-field">
+                        <label>Upload Images</label>
+                        <input type="file" name="image"placeholder="Upload images" multiple>
+                    </div>
+                    <div class="input-field">
+                        <label for="files"></label>
+                    </div>
+
+                </div>
+            </div>
+                    
+                            
+                            <div class="buttons">
+                                
+                                <button class="sumbit">
+                                    <span class="btnText">Submit</span>
+                                    <i class="uil uil-navigator"></i>
+                                </button>
+                            </div>
+                        </div> 
+                        
+                        
+                    </div> 
+
+                    
+                </div> 
+            </div>  
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
