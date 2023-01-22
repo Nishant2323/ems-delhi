@@ -40,6 +40,7 @@ mongoose.connect("mongodb+srv://admin:admin@cluster1.o9ppecy.mongodb.net/interog
 
 const detailSchema= {
     Category:[],
+    more_info:[],
     Police_Station: String,
     Region_No:Number,
    Name: String,
@@ -96,6 +97,8 @@ const bailSchema ={
   verification: String,
   status: String,
   beatid:String,
+  more_info:[]
+ 
   
 }
 const uniqueSchema = new mongoose.Schema({
@@ -177,6 +180,12 @@ const Child = new mongoose.model("Child",childSchema);
 app.get("/",function(req,res){
     res.sendFile(__dirname+"/home.html")
 })
+function noCache(req, res, next) {
+  res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
+  res.header('Expires', '-1');
+  res.header('Pragma', 'no-cache');
+  next();
+}
 app.get("/dcp/login",function(req,res){
     res.render("login" ,{warning:""})
   })
@@ -459,15 +468,21 @@ app.get("/more/:user",function(req,res){
   }
 })
 app.get("/beat/Dash/name/:user",function(req,res){
+  
   if(req.isAuthenticated()){
-  Bail.findOne({sno:req.params.user},function(err,founditem){
-    if(err){
-      console.log(err)
-    }
-    else{
-      res.render("beat_more",{newitem1:founditem})
-    }
-  })
+    List.findOne({fir_no:req.params.user},function(err,founditems){
+      if(founditems){
+        Bail.findOne({sno:req.params.user},function(err,founditem){ 
+            res.render("beat_update",{newitem1:founditem})
+        })
+      }
+       else{
+        Bail.findOne({sno:req.params.user},function(err,founditem){ 
+          res.render("beat_more",{newitem1:founditem})
+      })
+       } 
+    })
+ 
 }
 else{
   res.redirect("/beat/home")
@@ -502,6 +517,97 @@ res.end();
   }
   else{
     res.redirect("/dcp/login")
+  }
+})
+//--------------------------------------------------------------------Search portal get requests--------------------------------------------------------//
+app.get("/search/login",function(req,res){
+  res.render("search_login",{warning:""})
+})
+
+app.get("/search",function(req,res){
+  if(req.isAuthenticated()){
+    List.find({Region_No:1111},function(err,founditem){
+      res.render("search",{newitem:founditem})
+    })
+      
+    }
+     
+    
+    else{
+      res.redirect("/search/login")
+    }
+})
+app.get("/search/:user",function(req,res){
+   // List.findOne({fir_no:req.params.user},function(err,founditem){
+    //   if(err){
+    //     console.log(err);
+    //   }
+    //   else{
+    //     res.render("more",{newitem1:founditem})
+    //   }
+    // })
+    if(req.isAuthenticated()){
+      List.findOne({fir_no:req.params.user},function(err,founditem){
+            if(err){
+              console.log(err);
+            }
+            else{
+              res.render("search_more",{newitem1:founditem})
+            }
+          })
+  }
+  else{
+      res.redirect("/search/login")
+  }
+})
+app.get("/search/bail/:user",function(req,res){
+  var p =req.params.user;
+  if(req.isAuthenticated()){
+      
+  
+    Bail.findOne({sno :req.params.user},function(err,founditem){
+      if(!founditem){
+        res.render("bail_search",{ user :req.params.user})
+      }
+      else{
+        res.render("search_bail_more",{newitem1:founditem})
+      }
+    })
+  
+    
+ }
+ else{
+     res.redirect("/search/login")
+ }
+
+  })
+  //-----------------------------------------------------------search bail get requests --------------------------------------------------//
+  app.get("/bail/search",function(req,res){
+    res.render("bail_search_login",{warning:""})
+  })
+  app.get("/bail/search/dash",function(req,res){
+    if(req.isAuthenticated){
+      Bail.find({verification:"Unverified"},function(err,founditem){
+        if(err){
+          console.log(err);
+        }
+        else{
+          res.render("bail_search_dash",{newitem:founditem})
+        }
+      })
+    }
+    else{
+      res.redirect("/bail/search");
+    }
+  })
+app.get("/bail/search/name/:user",function(req,res){
+  if(req.isAuthenticated()){
+    Bail.findOne({sno:req.params.user},function(err,founditem){
+       res.render("verified_more",{newitem1:founditem})
+    })
+  }
+  else{
+   res.redirect("/bail/search")
   }
 })
 
@@ -565,6 +671,7 @@ app.post("/dcp/login",function(req,res){
                         res.send("<h1>You have entered the wrong unique id try again</h1>")
                      }
                      else{
+                      if( req.body.password.includes("DCP")===true||req.body.password.includes("ACP")==true){
                         List.find({Region_No:req.body.No}, function(err, founditems){
                             if(err){
                               console.log(err);
@@ -573,6 +680,10 @@ app.post("/dcp/login",function(req,res){
                               res.render("Dash",{newitem:founditems})
                             }
                           })
+                        }
+                        else{
+                          res.send("<h1> You are not authorise person </h1>")
+                        }
                      }
                 }
             })
@@ -657,6 +768,7 @@ app.post("/dcp/login",function(req,res){
             console.log(err)
         }
         passport.authenticate("local")(req,res,function(){
+          if(req.body.password.includes("DCP")==true||req.body.password.includes("ACP")==true||req.body.password.includes("SHO")==true){
             List.find({ Police_Station:req.body.No}, function(err, founditems){
                 if(err){
                   console.log(err);
@@ -665,6 +777,10 @@ app.post("/dcp/login",function(req,res){
                   res.render("police_station_dash",{newitem:founditems})
                 }
               })
+            }
+            else{
+              res.send("<h1> You are not authorise person </h1>")
+            }
         })
     })
   })
@@ -690,7 +806,12 @@ req.login(user,function(err){
         console.log(err)
     }
     passport.authenticate("local")(req,res,function(){
+      if(req.body.password.includes("DCP")==true||req.body.password.includes("ACP")==true || req.body.password.includes("SHO")==true||req.body.password.includes("beat")==true){
       res.sendFile(__dirname+"/beat_home.html");
+      }
+      else{
+        res.send("<h1> You are not authorise person </h1>")
+      }
     })
 })
   }) 
@@ -764,6 +885,7 @@ req.login(user,function(err){
            Email: req.body.Email,
            Mobile: req.body.Mobile,
           gender : req.body.gender,
+          more_info : req.body.more_info,
           Occupation: req.body.Occupation,
           Age: Number(req.body.age),
           Height:Number(req.body.height),
@@ -789,13 +911,19 @@ req.login(user,function(err){
         supplies: req.body.supplies,
         Vehicles: req.body.Vehicles,
         Occupation3: req.body.Occupation3,
-        Date: Date(req.body.Date1),
+        Date: req.body.Date1,
         Outcome: req.body.Outcome,
         Google_ID: req.body.Google_ID,
          Other: req.body.Other,
          more:req.body.more,
-         foo:req.files
-         
+         foo:req.files,
+         more_info:req.body.more_info
+        })
+        Bail.findOne({sno:req.body.fir_no},function(err,founditem){
+          if(founditem){
+            founditem.more_info.push(req.body.more_info);
+            founditem.save();
+          }
         })
         item1.save();
         res.sendFile(__dirname+"/submit_sucess.html")
@@ -856,7 +984,7 @@ app.post("/bail",function(req,res){
      if(!founditem){
       const item= new Bail({
         sno:req.body.sno,
-        date:Date(req.body.date),
+        date:req.body.date,
         accused_name:req.body.accused_name,
         mobile_number: req.body.mobile_number,
         gender: req.body.gender,
@@ -869,20 +997,22 @@ app.post("/bail",function(req,res){
         address: req.body.address,
         verification: req.body.verification,
         status: req.body.status,
-        beatid:req.body.beatid
+        beatid:req.body.beatid,
+        more_info:req.body.more_info
       })
       item.save();
       res.sendFile(__dirname+"/submit1.html")
      }
      else{
       founditem.beatid=req.body.beatid
-       founditem.date=Date(req.body.date)
+       founditem.date=req.body.date
        founditem.police_station=req.body.police_station;
        founditem.verification=req.body.verification;
        for(var i=0;i<req.body.category.length;i++){
          founditem.category.push(req.body.category[i]);
        }
        founditem.case=req.body.case
+       founditem.more_info=req.body.more_info
        founditem.save();
        console.log("save done")
        res.sendFile(__dirname+"/submit1.html")
@@ -964,8 +1094,8 @@ app.post("/interrogation",upload.array('foo'), function(req, res,next) {
       Google_ID: req.body.Google_ID,
        Other: req.body.Other,
        more:req.body.more,
-       foo:req.files
-       
+       foo:req.files,
+       more_info:req.body.more_info
       })
       item.save();
       res.sendFile(__dirname+"/submit.html")
@@ -973,7 +1103,6 @@ app.post("/interrogation",upload.array('foo'), function(req, res,next) {
     else{
       console.log("subodh is cool");
       founditem.Police_Station= req.body.Police_Station;
-      
       founditem.save();
       res.sendFile(__dirname+"/submit.html")
 
@@ -981,6 +1110,67 @@ app.post("/interrogation",upload.array('foo'), function(req, res,next) {
   })
   
 });
+//----------------------------------------------------post requests of search portal ----------------------------------------------------------//
+app.post("/search/login",function(req,res){
+  const user= new User({
+    username: req.body.username,
+    password: req.body.password
+})
+   
+  req.login(user,function(err){
+    if(err){
+        console.log(err)
+    }
+    passport.authenticate("local")(req,res,function(){
+      res.redirect("/search")
+    })
+})
+})
+app.post("/search/update/:user",function(req,res){
+  
+  
+    List.findOne({fir_no:req.params.user},function(err,founditem){
+      founditem.Category=req.body.category
+      founditem.more_info.push(req.body.more_info);
+      founditem.save();
+    })
+    Bail.findOne({sno:req.params.user},function(err,founditems){
+      if(!founditems){
+        res.send("<h1>update</h1>")
+      }
+      else{
+       
+        founditems.more_info.push(req.body.more_info);
+        founditems.save();
+      }
+    })
+    
+     res.send("<h1> updated</h1>")
+  
+})
+app.post("/search/update/name/:user",function(req,res){
+  List.findOne({fir_no:req.params.user},function(err,founditem){
+    founditem.Category=req.body.category
+    founditem.more_info.push(req.body.more_info);
+    founditem.save();
+    res.send("<h1>Updated</h1>")
+  })
+})
+//---------------------------post requests of bail search portal ----------------------------------------------------------------------//
+app.post("/bail/search",function(req,res){
+   const user = new User({
+    username : req.body.username,
+    password : req.body.password
+   })
+   req.login(user,function(err){
+    if(err){
+        console.log(err)
+    }
+    passport.authenticate("local")(req,res,function(){
+      res.redirect("/bail/search/dash")
+    })
+})
+})
 
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------//

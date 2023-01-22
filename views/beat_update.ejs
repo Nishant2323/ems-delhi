@@ -36,6 +36,12 @@
   table{
     border: solid black;
   }
+  .from{
+    margin: 12%;
+    margin-left: 24%;
+    border: solid;
+    height: 49%;
+  }
 </style>
 </head>
 <body>
@@ -116,8 +122,31 @@
       </table>
       <a class="button" href="/more/<%=newitem1.sno%>">Take video</a>
       <br>
-      <br>
-     <a class="button" href="/beat/verifiedit/<%=newitem1.sno%>">Verify It</a>
+      <div class="update">
+        <form action="/search/update/<%=newitem1.sno%>" method="post">
+            <div class="from">
+                <span class="title">Category</span>
+                <ul class="category"> <li><input type="checkbox" name="category" id="" value="jail/bail"> Jail/Bail</li>
+                    
+                    <li><input type="checkbox" name="category" id="" value="Criminal Activity"> Criminal Activity</li>
+                    <li><input type="checkbox" name="category" id="" value="Bad Character"> Bad Character</li>
+                    <li><input type="checkbox" name="category" id="" value="Bound Down 117 crpc"> Bound Down 117</li>
+                    
+                </ul>
+                <label>other category</label>
+                    <input type="text" id="inner" name="more">
+                    <div class="more_info1">
+                        <label>more info</label>
+                        <input type="text" name="more_info">
+                        <button type="submit"> submit</button>
+                    </div>
+            </div>
+           
+                
+        </form>
+      </div>  
+
+     
      
     </div>
 

@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="/favicon.ico">
-
     <title>Delhi Police</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
@@ -27,14 +25,27 @@
     line-height: 25px;
     text-decoration: none ;
   }
+  .image1{
+   
+   width: 28%;
+    height: 28%;
+  }
   .table-responsive{
     margin: 12%;
+    
   }
   .image{
     margin-left: 42%;
+    
   }
   table{
-    border: solid black;
+    border: solid;
+  }
+  .from{
+    margin: 12%;
+    margin-left: 24%;
+    border: solid;
+    height: 49%;
   }
 </style>
 </head>
@@ -43,6 +54,7 @@
   
     <div class="table-responsive">
       <img class=" image" src="/DP_small.png" alt="">
+
       <table class="table table-striped table-sm">
         <tbody>
           <tr>
@@ -98,29 +110,47 @@
             <td scope="col">Status</td>
             <td><%= newitem1.status%></td>
           </tr>
-          
+         
           
           <tr>
             <td scope="col">BeatId</td>
             <td><%= newitem1.beatid%></td>
           </tr>
           <tr>
+            <td scope="col">more info</td>
+            <td><%= newitem1.more_info%></td>
+          </tr>
+          <tr>
             <td scope="col">Region No</td>
             <td><%= newitem1.region_no%></td>
           </tr>
-          <tr>
-            <td scope="col">More Info</td>
-            <td><%= newitem1.more_info%></td>
-          </tr>
         </tbody>
       </table>
-      <a class="button" href="/more/<%=newitem1.sno%>">Take video</a>
-      <br>
-      <br>
-     <a class="button" href="/beat/verifiedit/<%=newitem1.sno%>">Verify It</a>
      
     </div>
-
+    <div class="update">
+        <form action="/search/update/<%=newitem1.sno%>" method="post">
+            <div class="from">
+                <span class="title">Category</span>
+                <ul class="category"> <li><input type="checkbox" name="category" id="" value="jail/bail"> Jail/Bail</li>
+                    
+                    <li><input type="checkbox" name="category" id="" value="Criminal Activity"> Criminal Activity</li>
+                    <li><input type="checkbox" name="category" id="" value="Bad Character"> Bad Character</li>
+                    <li><input type="checkbox" name="category" id="" value="Bound Down 117 crpc"> Bound Down 117</li>
+                    
+                </ul>
+                <label>other category</label>
+                    <input type="text" id="inner" name="more">
+                    <div class="more_info1">
+                        <label>more info</label>
+                        <input type="text" name="more_info">
+                        <button type="submit"> submit</button>
+                    </div>
+            </div>
+           
+                
+        </form>
+      </div>  
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>  
 </body>
