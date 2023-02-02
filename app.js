@@ -1098,6 +1098,16 @@ app.post("/interrogation",upload.array('foo'), function(req, res,next) {
        more_info:req.body.more_info
       })
       item.save();
+      Bail.findOne({sno:req.body.fir_no},function(err,founditem){
+        if(founditem){
+          founditem.more_info=req.body.more_info
+          founditem.save();
+        }
+        else{
+          res.sendFile(__dirname+"/submit.html")
+        }
+      })
+     
       res.sendFile(__dirname+"/submit.html")
     }
     else{
@@ -1155,6 +1165,26 @@ app.post("/search/update/name/:user",function(req,res){
     founditem.save();
     res.send("<h1>Updated</h1>")
   })
+})
+app.post("/search/update/beat/:user",function(req,res){
+  List.findOne({fir_no:req.params.user},function(err,founditem){
+    founditem.Category=req.body.category
+    founditem.more_info.push(req.body.more_info);
+    founditem.save();
+  })
+  Bail.findOne({sno:req.params.user},function(err,founditems){
+    if(!founditems){
+      res.send("<h1>update</h1>")
+    }
+    else{
+     
+      founditems.more_info.push(req.body.more_info);
+      founditems.verification="Verified"
+      founditems.save();
+    }
+  })
+  
+   res.send("<h1> updated</h1>")
 })
 //---------------------------post requests of bail search portal ----------------------------------------------------------------------//
 app.post("/bail/search",function(req,res){
